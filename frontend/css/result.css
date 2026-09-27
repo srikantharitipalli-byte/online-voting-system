@@ -1,0 +1,648 @@
+/* =========================================================
+   PREMIUM ELECTION RESULTS UI
+   Government e-Governance Inspired
+   ========================================================= */
+
+.result-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 22px;
+  flex-wrap: wrap;
+
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid #dce4eb;
+}
+
+.result-head h1 {
+  margin: 7px 0 0;
+
+  color: #102a43;
+
+  font-size: 30px;
+  font-weight: 800;
+
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.result-head > div:first-child {
+  min-width: 220px;
+}
+
+.result-meta {
+  display: flex;
+  align-items: stretch;
+
+  gap: 0;
+
+  background: #ffffff;
+
+  border: 1px solid #d9e2eb;
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 5px 16px rgba(16, 42, 67, 0.06);
+}
+
+.result-meta > div {
+  min-width: 105px;
+
+  padding: 12px 18px;
+
+  border-right: 1px solid #e4eaf0;
+}
+
+.result-meta > div:last-child {
+  border-right: none;
+}
+
+.result-meta strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #102a43;
+
+  font-family: var(--font-mono, "IBM Plex Mono", monospace);
+
+  font-size: 23px;
+  font-weight: 750;
+
+  line-height: 1.2;
+}
+
+.result-meta span {
+  display: block;
+
+  color: #647485;
+
+  font-size: 10.5px;
+  font-weight: 700;
+
+  line-height: 1.4;
+
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* =========================================================
+   LEADING RESULT / WINNER BANNER
+   ========================================================= */
+
+.leader-banner {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 17px;
+
+  min-height: 76px;
+
+  margin-bottom: 24px;
+  padding: 18px 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #102a43 0%,
+      #174a7e 100%
+    );
+
+  color: #ffffff;
+
+  border: 1px solid #0e263c;
+  border-radius: 14px;
+
+  box-shadow:
+    0 10px 24px rgba(16, 42, 67, 0.16);
+
+  overflow: hidden;
+}
+
+/* Subtle government-style accent */
+
+.leader-banner::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 5px;
+
+  background: #e49a2f;
+}
+
+.leader-banner::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 150px;
+  height: 100%;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255,255,255,0.08),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+.leader-banner > * {
+  position: relative;
+  z-index: 1;
+}
+
+.leader-banner h3 {
+  margin: 0 0 3px;
+
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 750;
+
+  line-height: 1.35;
+}
+
+.leader-banner p {
+  margin: 0;
+
+  color: #c8d5e2;
+
+  font-size: 13px;
+
+  line-height: 1.55;
+}
+
+.leader-banner strong {
+  margin-left: auto;
+
+  color: #f2bd55;
+
+  font-family: var(--font-mono, "IBM Plex Mono", monospace);
+
+  font-size: 21px;
+  font-weight: 800;
+
+  white-space: nowrap;
+
+  text-align: right;
+}
+
+/* =========================================================
+   RESULTS LIST
+   ========================================================= */
+
+.results-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+
+  width: 100%;
+}
+
+/* =========================================================
+   RESULT ROW
+   ========================================================= */
+
+.result-row {
+  position: relative;
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 17px 20px 18px;
+
+  background: #ffffff;
+
+  border: 1px solid #dbe3ea;
+  border-radius: 13px;
+
+  box-shadow:
+    0 3px 10px rgba(16, 42, 67, 0.035);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.result-row:hover {
+  transform: translateY(-2px);
+
+  border-color: #b8c8d7;
+
+  box-shadow:
+    0 8px 20px rgba(16, 42, 67, 0.08);
+}
+
+/* Left status accent */
+
+.result-row::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 3px;
+
+  background: #d6dee6;
+
+  border-radius: 13px 0 0 13px;
+}
+
+/* =========================================================
+   RESULT ROW TOP
+   ========================================================= */
+
+.result-row-top {
+  display: flex;
+
+  align-items: baseline;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-bottom: 11px;
+
+  flex-wrap: wrap;
+}
+
+.result-row-name {
+  color: #102a43;
+
+  font-family: var(
+    --font-display,
+    "Fraunces",
+    Georgia,
+    serif
+  );
+
+  font-size: 17px;
+  font-weight: 750;
+
+  line-height: 1.4;
+}
+
+.result-row-party {
+  display: inline-block;
+
+  margin-left: 8px;
+
+  color: #657687;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  line-height: 1.4;
+}
+
+.result-row-count {
+  color: #174a7e;
+
+  font-family: var(
+    --font-mono,
+    "IBM Plex Mono",
+    monospace
+  );
+
+  font-size: 13.5px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   PROGRESS BAR
+   ========================================================= */
+
+.bar-track {
+  position: relative;
+
+  width: 100%;
+  height: 10px;
+
+  background: #edf2f5;
+
+  border: 1px solid #e1e8ed;
+  border-radius: 999px;
+
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  width: 0%;
+
+  min-width: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      #174a7e,
+      #2875aa
+    );
+
+  border-radius: 999px;
+
+  box-shadow:
+    0 1px 3px rgba(23, 74, 126, 0.22);
+
+  transition:
+    width 0.6s ease;
+}
+
+/* =========================================================
+   FIRST RANK / LEADING RESULT
+   ========================================================= */
+
+.result-row.rank-1 {
+  border-color: #d8ad54;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffdf8 0%,
+      #ffffff 100%
+    );
+
+  box-shadow:
+    0 0 0 2px rgba(228, 154, 47, 0.10),
+    0 8px 22px rgba(16, 42, 67, 0.07);
+}
+
+.result-row.rank-1::before {
+  background: #e49a2f;
+}
+
+.result-row.rank-1 .result-row-name {
+  color: #102a43;
+}
+
+.result-row.rank-1 .result-row-count {
+  color: #174a7e;
+}
+
+.result-row.rank-1 .bar-fill {
+  background:
+    linear-gradient(
+      90deg,
+      #23835b,
+      #3f9d6d
+    );
+
+  box-shadow:
+    0 1px 4px rgba(35, 131, 91, 0.25);
+}
+
+/* =========================================================
+   EMPTY RESULTS
+   ========================================================= */
+
+.empty-note {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 150px;
+
+  margin-top: 10px;
+  padding: 35px 20px;
+
+  box-sizing: border-box;
+
+  color: #68798a;
+
+  background: #ffffff;
+
+  border: 1px dashed #cbd7e1;
+  border-radius: 13px;
+
+  font-size: 14px;
+  line-height: 1.6;
+
+  text-align: center;
+}
+
+/* =========================================================
+   RESULT CONTENT SAFETY
+   ========================================================= */
+
+.result-row-name,
+.result-row-party,
+.result-row-count,
+.leader-banner h3,
+.leader-banner p {
+  overflow-wrap: anywhere;
+}
+
+.result-row-count {
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .result-head {
+    align-items: flex-start;
+
+    gap: 18px;
+
+    margin-bottom: 22px;
+  }
+
+  .result-head h1 {
+    font-size: 27px;
+  }
+
+  .result-meta {
+    width: 100%;
+  }
+
+  .result-meta > div {
+    flex: 1;
+  }
+
+  .leader-banner {
+    padding: 17px 19px;
+  }
+
+  .leader-banner strong {
+    font-size: 19px;
+  }
+
+  .result-row {
+    padding: 16px 17px 17px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .result-head {
+    display: block;
+
+    padding-bottom: 18px;
+  }
+
+  .result-head h1 {
+    font-size: 25px;
+
+    margin-top: 5px;
+  }
+
+  .result-meta {
+    width: 100%;
+
+    margin-top: 17px;
+  }
+
+  .result-meta > div {
+    min-width: 0;
+
+    padding: 11px 12px;
+  }
+
+  .result-meta strong {
+    font-size: 20px;
+  }
+
+  .result-meta span {
+    font-size: 9.5px;
+  }
+
+  .leader-banner {
+    align-items: flex-start;
+
+    gap: 12px;
+
+    padding: 16px 17px;
+  }
+
+  .leader-banner h3 {
+    font-size: 16px;
+  }
+
+  .leader-banner p {
+    font-size: 12px;
+  }
+
+  .leader-banner strong {
+    margin-left: auto;
+
+    font-size: 16px;
+  }
+
+  .result-row-top {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 5px;
+  }
+
+  .result-row-name {
+    font-size: 16px;
+  }
+
+  .result-row-party {
+    margin-left: 5px;
+  }
+
+  .result-row-count {
+    font-size: 12.5px;
+  }
+
+  .bar-track {
+    height: 9px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .result-head h1 {
+    font-size: 22px;
+  }
+
+  .result-meta > div {
+    padding: 10px 8px;
+  }
+
+  .result-meta strong {
+    font-size: 18px;
+  }
+
+  .result-meta span {
+    font-size: 8.5px;
+  }
+
+  .leader-banner {
+    flex-direction: column;
+  }
+
+  .leader-banner strong {
+    margin-left: 0;
+
+    align-self: flex-start;
+
+    font-size: 15px;
+  }
+
+  .result-row {
+    padding: 14px 14px 15px;
+  }
+
+  .result-row-name {
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY / REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .result-row,
+  .bar-fill {
+    transition: none;
+  }
+
+  .result-row:hover {
+    transform: none;
+  }
+}

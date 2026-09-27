@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My Profile — OVS</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="navbar">
+    <a href="index.html" class="brand"><span class="brand-mark">OV</span>OVS</a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="vote.html">Vote</a></li>
+      <li><a href="result.html">Results</a></li>
+      <li><a href="profile.html" class="active">Profile</a></li>
+    </ul>
+    <div class="nav-cta" id="nav-auth-area"></div>
+  </nav>
+</header>
+
+<main class="page-main">
+  <div class="container">
+    <span class="eyebrow">Account</span>
+    <h1 style="margin-bottom:24px;">My profile</h1>
+
+    <div class="dash-grid">
+      <div class="card">
+        <div id="alertBox" class="alert"></div>
+
+        <form id="profileForm" novalidate>
+          <div class="form-group">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email (read-only)</label>
+              <input type="email" id="email" name="email" disabled />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Address</label>
+            <textarea id="address" name="address"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="submitBtn">Save changes</button>
+        </form>
+      </div>
+
+      <div class="card dash-side">
+        <h3>Voter card</h3>
+        <ul class="summary-list">
+          <li><span>Voter ID</span><strong id="cardVoterId" class="mono">—</strong></li>
+          <li><span>Role</span><strong id="cardRole">—</strong></li>
+          <li><span>Vote status</span><strong id="cardVoteStatus">—</strong></li>
+          <li><span>Registered</span><strong id="cardCreated">—</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 Online Voting System. Final Year Project.</span>
+      <span>Built with Node.js &amp; MySQL</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

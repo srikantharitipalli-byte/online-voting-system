@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Candidates — Online Voting System</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/candidates.css" />
+<link rel="stylesheet" href="css/vote.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="navbar">
+    <a href="index.html" class="brand"><span class="brand-mark">OV</span>OVS</a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="candidates.html" class="active">Candidates</a></li>
+      <li><a href="vote.html">Vote</a></li>
+      <li><a href="result.html">Results</a></li>
+      <li><a href="profile.html">Profile</a></li>
+    </ul>
+    <div class="nav-cta" id="nav-auth-area"></div>
+  </nav>
+</header>
+
+<main class="page-main">
+  <div class="container vote-container">
+
+    <div class="vote-head">
+      <span class="eyebrow">Official Ballot &amp; Candidates</span>
+      <h1>Select one candidate</h1>
+      <p>Your vote is final once submitted and cannot be changed. Choose carefully.</p>
+    </div>
+
+    <!-- Location Verification Card -->
+    <div id="locationStatusCard" class="card" style="padding: 16px; margin-bottom: 24px; border-left: 4px solid #f4b400; background: #fffde7; display: flex; align-items: center; justify-content: space-between; border-radius: 8px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 20px;">📍</span>
+        <div>
+          <h4 style="margin: 0 0 2px 0; font-size: 14px; font-weight: 600; color: #333;">Location Verification</h4>
+          <p id="locationStatusText" style="margin: 0; font-size: 13px; color: #555;">Requesting device geolocation...</p>
+        </div>
+      </div>
+      <div id="locationIndicator" style="width: 12px; height: 12px; border-radius: 50%; background: #f4b400;"></div>
+    </div>
+
+    <div id="alertBox" class="alert"></div>
+
+    <!-- Already-voted state -->
+    <div id="alreadyVotedState" class="card ballot-card" style="display:none;">
+      <div class="seal-icon">✓</div>
+      <h2>You've already voted</h2>
+      <p id="alreadyVotedText">Only one ballot is allowed per voter.</p>
+      <a href="result.html" class="btn btn-primary">View live results</a>
+    </div>
+
+    <!-- Loading state -->
+    <div id="loadingState" class="candidate-grid">
+      <div class="candidate-card skeleton" style="height:280px;"></div>
+      <div class="candidate-card skeleton" style="height:280px;"></div>
+      <div class="candidate-card skeleton" style="height:280px;"></div>
+    </div>
+
+    <!-- Ballot form -->
+    <form id="voteForm" style="display:none;">
+      <div class="candidate-grid" id="candidateGrid"></div>
+
+      <div class="vote-submit-bar">
+        <div>
+          <strong id="selectedLabel">No candidate selected</strong>
+          <p class="mono" style="margin:0;font-size:12px;">Voter: <span id="voterIdLabel">—</span></p>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitVoteBtn" disabled>Submit my vote</button>
+      </div>
+    </form>
+
+  </div>
+</main>
+
+<!-- Confirmation modal -->
+<div id="confirmModal" class="modal-backdrop" style="display:none;">
+  <div class="modal-card">
+    <h3>Confirm your vote</h3>
+    <p>You are about to vote for <strong id="confirmName">—</strong> (<span id="confirmParty">—</span>). This cannot be undone.</p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="cancelConfirm">Go back</button>
+      <button class="btn btn-primary" id="finalConfirm">Yes, cast my vote</button>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 Online Voting System. Final Year Project.</span>
+      <span>Built with Node.js &amp; MySQL</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/vote.js"></script>
+</body>
+</html>

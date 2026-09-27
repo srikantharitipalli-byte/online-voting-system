@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Elections - Admin Panel</title>
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+</head>
+<body>
+    <div class="admin-dashboard">
+        <nav class="admin-navbar">
+            <div class="navbar-brand">
+                <h2>Admin Panel</h2>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="admin-dashboard.html">Dashboard</a></li>
+                <li><a href="manage-users.html">Manage Users</a></li>
+                <li><a href="manage-candidates.html">Manage Candidates</a></li>
+                <li><a href="admin-results.html">Results</a></li>
+                <li><a href="index.html" class="logout">Logout</a></li>
+            </ul>
+        </nav>
+
+        <div class="dashboard-content">
+            <h1>Manage Elections</h1>
+            
+            <div class="manage-header">
+                <button class="btn-add" id="addElectionBtn">Create New Election</button>
+                <input type="text" id="searchElections" placeholder="Search elections...">
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Election ID</th>
+                        <th>Title</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="electionsTableBody">
+                    <!-- Elections will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Add/Edit Election Modal -->
+    <div id="electionModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add/Edit Election</h2>
+            <form id="electionForm">
+                <div class="form-group">
+                    <label for="electionTitle">Election Title:</label>
+                    <input type="text" id="electionTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="electionDescription">Description:</label>
+                    <textarea id="electionDescription" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="electionStartDate">Start Date & Time:</label>
+                    <input type="datetime-local" id="electionStartDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="electionEndDate">End Date & Time:</label>
+                    <input type="datetime-local" id="electionEndDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="electionStatus">Status:</label>
+                    <select id="electionStatus" required>
+                        <option value="pending">Pending</option>
+                        <option value="active">Active</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit">Save Election</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/manage-elections.js"></script>
+</body>
+</html>

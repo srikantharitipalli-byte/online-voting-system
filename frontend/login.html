@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Log In — OVS</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/register.css" />
+<link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="navbar">
+    <a href="index.html" class="brand"><span class="brand-mark">OV</span>OVS</a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="vote.html">Vote</a></li>
+      <li><a href="result.html">Results</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta" id="nav-auth-area"></div>
+  </nav>
+</header>
+
+<main class="page-main">
+  <div class="container auth-container">
+    <div class="auth-card ballot-card login-card">
+      <span class="serial mono">SERIAL NO. OVS-LOGIN</span>
+      <span class="eyebrow" style="margin-top:14px;">Voter Sign In</span>
+      <h1>Welcome back</h1>
+      <p>Log in to check your status, cast your vote, or view live results.</p>
+
+      <div id="alertBox" class="alert"></div>
+
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Your password" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="submitBtn">Log in</button>
+      </form>
+
+      <div class="demo-box">
+        <strong>Demo accounts</strong>
+        <div>Admin — admin@ovs.com / Admin@123</div>
+        <div>Voter — voter@ovs.com / Voter@123</div>
+      </div>
+
+      <p class="auth-switch">New here? <a href="register.html">Create an account</a></p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 Online Voting System. Final Year Project.</span>
+      <span>Built with Node.js &amp; MySQL</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

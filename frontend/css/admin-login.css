@@ -1,0 +1,549 @@
+
+/* =========================================================
+   ONLINE VOTING SYSTEM
+   PREMIUM GOVERNMENT ADMIN LOGIN PAGE
+   Responsive | Secure Portal Design | Bug-Conscious CSS
+   ========================================================= */
+
+/* -------------------- ROOT VARIABLES -------------------- */
+
+:root {
+    --gov-navy: #102a43;
+    --gov-blue: #174a7e;
+    --gov-blue-light: #245d91;
+
+    --gov-saffron: #e89b36;
+    --gov-green: #23835b;
+
+    --bg-main: #f1f5f9;
+    --bg-white: #ffffff;
+
+    --text-primary: #172b4d;
+    --text-secondary: #52657a;
+    --text-muted: #7b8a9a;
+
+    --border-color: #dce4ed;
+    --danger: #b42318;
+
+    --radius: 10px;
+
+    --shadow:
+        0 20px 60px rgba(16, 42, 67, 0.15);
+}
+
+/* -------------------- RESET -------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    background: var(--bg-main);
+    color: var(--text-primary);
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+/* -------------------- LOGIN PAGE BACKGROUND -------------------- */
+
+.admin-login-container {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    padding: 40px 20px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(36, 93, 145, 0.10),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(232, 155, 54, 0.10),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #f8fafc 0%,
+            #edf3f8 50%,
+            #f4f7fa 100%
+        );
+}
+
+/* Decorative government-style background */
+
+.admin-login-container::before {
+    content: "";
+
+    position: absolute;
+
+    top: -180px;
+    right: -150px;
+
+    width: 450px;
+    height: 450px;
+
+    border: 1px solid rgba(23, 74, 126, 0.08);
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.admin-login-container::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: -200px;
+    left: -160px;
+
+    width: 500px;
+    height: 500px;
+
+    border: 1px solid rgba(23, 74, 126, 0.08);
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+/* -------------------- LOGIN CARD -------------------- */
+
+.login-box {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 440px;
+
+    padding: 40px 38px;
+
+    background: var(--bg-white);
+
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+
+    animation: loginAppear 0.4s ease-out;
+}
+
+/* Government tricolour-inspired top border */
+
+.login-box::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background: linear-gradient(
+        90deg,
+        var(--gov-saffron) 0%,
+        var(--gov-saffron) 33.33%,
+        #ffffff 33.33%,
+        #ffffff 66.66%,
+        var(--gov-green) 66.66%,
+        var(--gov-green) 100%
+    );
+}
+
+/* -------------------- LOGIN ANIMATION -------------------- */
+
+@keyframes loginAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* -------------------- LOGIN HEADING -------------------- */
+
+.login-box h1 {
+    color: var(--gov-navy);
+
+    text-align: center;
+
+    font-size: 27px;
+    font-weight: 800;
+
+    line-height: 1.35;
+    letter-spacing: -0.5px;
+
+    margin-bottom: 10px;
+}
+
+/* Portal subtitle */
+
+.login-box h1::after {
+    content: "ADMINISTRATOR PORTAL";
+
+    display: block;
+
+    margin-top: 10px;
+
+    color: var(--gov-blue);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+    line-height: 1.6;
+}
+
+/* -------------------- FORM GROUP -------------------- */
+
+.form-group {
+    width: 100%;
+    min-width: 0;
+
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--text-primary);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* -------------------- INPUT FIELDS -------------------- */
+
+.form-group input {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    min-height: 48px;
+
+    padding: 13px 15px;
+
+    background: #ffffff;
+
+    color: var(--text-primary);
+
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+
+    font-size: 15px;
+    font-family: inherit;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+/* Placeholder */
+
+.form-group input::placeholder {
+    color: #94a3b8;
+    opacity: 1;
+}
+
+/* Focus state */
+
+.form-group input:focus {
+    background: #ffffff;
+
+    border-color: var(--gov-blue);
+
+    box-shadow:
+        0 0 0 3px rgba(23, 74, 126, 0.12);
+
+    outline: none;
+}
+
+/* Invalid fields */
+
+.form-group input:invalid:not(:placeholder-shown) {
+    border-color: var(--danger);
+}
+
+/* -------------------- LOGIN BUTTON -------------------- */
+
+.btn-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 50px;
+
+    padding: 14px 20px;
+
+    margin-top: 12px;
+
+    background: var(--gov-blue);
+    color: #ffffff;
+
+    border: 1px solid var(--gov-blue);
+    border-radius: 6px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* Hover */
+
+.btn-login:hover {
+    background: var(--gov-navy);
+    border-color: var(--gov-navy);
+
+    box-shadow:
+        0 6px 16px rgba(16, 42, 67, 0.18);
+}
+
+/* Active */
+
+.btn-login:active {
+    transform: scale(0.99);
+    box-shadow: none;
+}
+
+/* Keyboard focus */
+
+.btn-login:focus-visible {
+    outline: 3px solid rgba(232, 155, 54, 0.8);
+    outline-offset: 4px;
+}
+
+/* Disabled/loading state */
+
+.btn-login:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+
+    box-shadow: none;
+    transform: none;
+}
+
+/* -------------------- LOGIN LINK -------------------- */
+
+.login-link {
+    text-align: center;
+
+    margin-top: 24px;
+    padding-top: 20px;
+
+    border-top: 1px solid var(--border-color);
+
+    color: var(--text-secondary);
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.login-link a {
+    color: var(--gov-blue);
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition: color 0.2s ease;
+}
+
+.login-link a:hover {
+    color: var(--gov-navy);
+    text-decoration: underline;
+}
+
+.login-link a:focus-visible {
+    outline: 2px solid var(--gov-saffron);
+    outline-offset: 4px;
+}
+
+/* -------------------- SECURITY / FOOTER TEXT -------------------- */
+
+/* If your existing HTML has a footer inside login-box,
+   it will be styled automatically. */
+
+.login-box p {
+    overflow-wrap: anywhere;
+}
+
+/* -------------------- RESPONSIVE TABLET -------------------- */
+
+@media (max-width: 768px) {
+
+    .admin-login-container {
+        padding: 30px 20px;
+    }
+
+    .login-box {
+        max-width: 420px;
+        padding: 36px 30px;
+    }
+
+    .login-box h1 {
+        font-size: 25px;
+    }
+}
+
+/* -------------------- RESPONSIVE MOBILE -------------------- */
+
+@media (max-width: 480px) {
+
+    .admin-login-container {
+        align-items: center;
+        justify-content: center;
+
+        padding: 20px 14px;
+
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    .login-box {
+        width: 100%;
+        max-width: 420px;
+
+        padding: 32px 22px;
+
+        border-radius: 8px;
+    }
+
+    .login-box h1 {
+        font-size: 23px;
+    }
+
+    .login-box h1::after {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    .form-group {
+        margin-bottom: 19px;
+    }
+
+    .form-group input {
+        min-height: 48px;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .btn-login {
+        min-height: 48px;
+        font-size: 15px;
+    }
+
+    .login-link {
+        font-size: 13px;
+        margin-top: 20px;
+        padding-top: 18px;
+    }
+}
+
+/* -------------------- VERY SMALL MOBILE -------------------- */
+
+@media (max-width: 360px) {
+
+    .admin-login-container {
+        padding: 14px 10px;
+    }
+
+    .login-box {
+        padding: 28px 18px;
+    }
+
+    .login-box h1 {
+        font-size: 21px;
+    }
+
+    .login-box h1::after {
+        letter-spacing: 1px;
+    }
+}
+
+/* -------------------- LANDSCAPE / SHORT SCREENS -------------------- */
+
+@media (max-height: 600px) {
+
+    .admin-login-container {
+        align-items: flex-start;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .login-box {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+/* -------------------- REDUCED MOTION -------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

@@ -1,0 +1,239 @@
+
+.vote-container { max-width: 880px; }
+
+.vote-head { margin-bottom: 28px; }
+.vote-head h1 { font-size: 30px; margin: 8px 0 6px; }
+
+.candidate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.candidate-card {
+  position: relative;
+  background: #fff;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.candidate-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.candidate-card.selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 150, 46, 0.22);
+  background: #fdf8ee;
+}
+
+.candidate-card input[type="radio"] {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+/* 1. Candidate Photo */
+.candidate-photo-wrapper {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 12px auto;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.candidate-photo-img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--line);
+  background: #f8fafc;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  display: block;
+}
+
+.candidate-avatar-initials {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 26px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* 2. Candidate Name */
+.candidate-card h3,
+.candidate-name {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 4px 0 2px 0;
+  color: var(--navy);
+}
+
+/* 3. Party Name */
+.candidate-party-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4b5563;
+  margin: 0 0 10px 0;
+}
+
+/* 4. Party Symbol */
+.party-symbol-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px auto;
+  min-height: 44px;
+}
+
+.party-symbol-img,
+.party-symbol-icon {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  vertical-align: middle;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  padding: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.party-symbol-wrapper.text-symbol {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 18px;
+}
+
+.candidate-party-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f0f7ff;
+  border: 1px solid #d0e2ff;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0050b3;
+  margin-bottom: 8px;
+}
+
+/* 5. Description */
+.candidate-desc {
+  font-size: 13.5px;
+  margin: 0 0 16px 0;
+  color: var(--ink-soft);
+  line-height: 1.45;
+  flex-grow: 1;
+}
+
+/* 6. Vote button inside card */
+.btn-card-vote {
+  width: 100%;
+  max-width: 160px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid var(--navy);
+  background: #ffffff;
+  color: var(--navy);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin-top: auto;
+}
+
+.candidate-card:hover .btn-card-vote {
+  background: var(--navy);
+  color: #ffffff;
+}
+
+.candidate-card.selected .btn-card-vote {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #ffffff;
+}
+
+.vote-submit-bar {
+  position: sticky;
+  bottom: 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+#selectedLabel { font-size: 14.5px; color: var(--navy); }
+
+.seal-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--seal-green-dim);
+  color: var(--seal-green);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  border: 2px solid var(--seal-green);
+  margin-bottom: 14px;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 25, 48, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+}
+
+.modal-card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 28px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.modal-card h3 { margin-bottom: 10px; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+
+@media (max-width: 700px) {
+  .candidate-grid { grid-template-columns: 1fr; }
+  .vote-submit-bar { flex-direction: column; align-items: stretch; text-align: center; }
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Voting System</title>
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+</head>
+<body>
+    <div class="admin-dashboard">
+        <nav class="admin-navbar">
+            <div class="navbar-brand">
+                <h2>Admin Panel</h2>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="manage-users.html">Manage Users</a></li>
+                <li><a href="manage-candidates.html">Manage Candidates</a></li>
+                <li><a href="manage-elections.html">Manage Elections</a></li>
+                <li><a href="admin-results.html">Results</a></li>
+                <li><a href="index.html" class="logout">Logout</a></li>
+            </ul>
+        </nav>
+
+        <div class="dashboard-content">
+            <h1>Welcome to Admin Dashboard</h1>
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <h3>Total Users</h3>
+                    <p class="stat-number" id="totalUsers">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Candidates</h3>
+                    <p class="stat-number" id="totalCandidates">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Elections</h3>
+                    <p class="stat-number" id="activeElections">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Votes</h3>
+                    <p class="stat-number" id="totalVotes">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Contact Messages</h3>
+                    <p class="stat-number" id="unreadMessages" style="color: #667eea;">0</p>
+                </div>
+            </div>
+
+            <div class="recent-activity">
+                <h2>Recent Activity</h2>
+                <div id="activityLog"></div>
+            </div>
+
+            <div class="recent-activity" style="margin-top: 30px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h2 style="margin: 0;">Contact Messages</h2>
+                    <button class="btn-export" id="refreshMessagesBtn" style="padding: 6px 14px; font-size: 13px;">Refresh Messages</button>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table class="data-table" id="contactMessagesTable" style="margin-top: 0;">
+                        <thead>
+                            <tr>
+                                <th style="width: 50px;">ID</th>
+                                <th style="width: 150px;">Date &amp; Time</th>
+                                <th style="width: 140px;">Name</th>
+                                <th style="width: 180px;">Email</th>
+                                <th style="width: 160px;">Subject</th>
+                                <th>Message</th>
+                                <th style="width: 90px;">Status</th>
+                                <th style="width: 120px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contactMessagesBody">
+                            <tr><td colspan="8" style="text-align: center; padding: 20px; color: #888;">Loading messages...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

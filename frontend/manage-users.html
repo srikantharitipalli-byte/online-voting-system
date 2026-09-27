@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users - Admin Panel</title>
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+</head>
+<body>
+    <div class="admin-dashboard">
+        <nav class="admin-navbar">
+            <div class="navbar-brand">
+                <h2>Admin Panel</h2>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="admin-dashboard.html">Dashboard</a></li>
+                <li><a href="manage-candidates.html">Manage Candidates</a></li>
+                <li><a href="manage-elections.html">Manage Elections</a></li>
+                <li><a href="admin-results.html">Results</a></li>
+                <li><a href="index.html" class="logout">Logout</a></li>
+            </ul>
+        </nav>
+
+        <div class="dashboard-content">
+            <h1>Manage Users</h1>
+            
+            <div class="manage-header">
+                <button class="btn-add" id="addUserBtn">Add New User</button>
+                <input type="text" id="searchUsers" placeholder="Search users...">
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTableBody">
+                    <!-- Users will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Add/Edit User Modal -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add/Edit User</h2>
+            <form id="userForm">
+                <div class="form-group">
+                    <label for="userName">Full Name:</label>
+                    <input type="text" id="userName" required>
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Email:</label>
+                    <input type="email" id="userEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="userRole">Role:</label>
+                    <select id="userRole" required>
+                        <option value="">Select Role</option>
+                        <option value="voter">Voter</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit">Save User</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/manage-users.js"></script>
+</body>
+</html>

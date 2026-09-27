@@ -1,0 +1,811 @@
+
+/* =========================================================
+   CANDIDATES.CSS
+   Premium Government e-Governance Voting Portal
+   Theme: Navy Blue | Ashoka Green | Saffron | White
+   Existing HTML classes and JavaScript selectors preserved
+   ========================================================= */
+
+/* ---------- 1. Design Tokens ---------- */
+
+:root {
+  --vote-navy: #102a43;
+  --vote-navy-dark: #0b1f33;
+  --vote-blue: #174a7e;
+  --vote-blue-light: #eaf2fa;
+
+  --vote-green: #176b45;
+  --vote-green-dark: #115538;
+  --vote-green-light: #eaf5ee;
+
+  --vote-saffron: #e89b36;
+  --vote-saffron-light: #fff5e7;
+
+  --vote-white: #ffffff;
+  --vote-bg: #f3f6fa;
+  --vote-surface: #ffffff;
+
+  --vote-text: #172b3a;
+  --vote-muted: #627487;
+  --vote-border: #d8e1eb;
+
+  --vote-radius: 14px;
+  --vote-radius-sm: 9px;
+
+  --vote-shadow:
+    0 4px 18px rgba(16, 42, 67, 0.07);
+
+  --vote-shadow-hover:
+    0 12px 30px rgba(16, 42, 67, 0.13);
+
+  --vote-transition:
+    0.2s ease;
+}
+
+/* ---------- 2. Main Voting Layout ---------- */
+
+.vote-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 24px 40px;
+  box-sizing: border-box;
+  color: var(--vote-text);
+}
+
+.vote-container *,
+.vote-container *::before,
+.vote-container *::after {
+  box-sizing: border-box;
+}
+
+.vote-head {
+  position: relative;
+  margin-bottom: 30px;
+  padding: 28px 30px;
+  overflow: hidden;
+
+  background: linear-gradient(
+    120deg,
+    var(--vote-navy-dark),
+    var(--vote-navy),
+    var(--vote-blue)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--vote-radius);
+
+  box-shadow: var(--vote-shadow);
+  color: var(--vote-white);
+}
+
+/* Saffron and green government accent */
+
+.vote-head::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+
+  background: linear-gradient(
+    to bottom,
+    #f59e0b 0%,
+    #f59e0b 33.33%,
+    #ffffff 33.33%,
+    #ffffff 66.66%,
+    #16834a 66.66%,
+    #16834a 100%
+  );
+}
+
+.vote-head h1 {
+  position: relative;
+  margin: 8px 0 10px;
+  color: #ffffff;
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+}
+
+.vote-head p {
+  color: #dbe7f3;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ---------- 3. Candidate Grid ---------- */
+
+.candidate-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 270px), 1fr)
+  );
+
+  gap: 24px;
+  margin-bottom: 30px;
+  align-items: stretch;
+}
+
+/* ---------- 4. Candidate Card ---------- */
+
+.candidate-card {
+  position: relative;
+  isolation: isolate;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  min-width: 0;
+  padding: 28px 24px 24px;
+
+  background: var(--vote-surface);
+  border: 1px solid var(--vote-border);
+  border-radius: var(--vote-radius);
+
+  box-shadow: var(--vote-shadow);
+
+  cursor: pointer;
+
+  transition:
+    border-color var(--vote-transition),
+    box-shadow var(--vote-transition),
+    transform var(--vote-transition),
+    background-color var(--vote-transition);
+}
+
+/* Saffron top accent */
+
+.candidate-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 3px;
+
+  background: var(--vote-saffron);
+  border-radius: 0 0 5px 5px;
+
+  opacity: 0.7;
+  transition:
+    left var(--vote-transition),
+    right var(--vote-transition),
+    opacity var(--vote-transition);
+}
+
+.candidate-card:hover {
+  border-color: #9bb5ce;
+  background: #ffffff;
+
+  transform: translateY(-4px);
+  box-shadow: var(--vote-shadow-hover);
+}
+
+.candidate-card:hover::before {
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+/* Selected candidate */
+
+.candidate-card.selected {
+  background: #f1f8f3;
+  border: 2px solid var(--vote-green);
+
+  box-shadow:
+    0 0 0 3px rgba(23, 107, 69, 0.09),
+    var(--vote-shadow);
+}
+
+.candidate-card.selected::before {
+  left: 0;
+  right: 0;
+  background: var(--vote-green);
+  opacity: 1;
+}
+
+/* Keyboard accessibility */
+
+.candidate-card:focus-within {
+  outline: 3px solid rgba(23, 74, 126, 0.3);
+  outline-offset: 3px;
+}
+
+/* ---------- 5. Candidate Radio Button ---------- */
+
+.candidate-card input[type="radio"] {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  width: 20px;
+  height: 20px;
+  margin: 0;
+
+  accent-color: var(--vote-green);
+  cursor: pointer;
+}
+
+.candidate-card input[type="radio"]:focus-visible {
+  outline: 3px solid rgba(23, 74, 126, 0.35);
+  outline-offset: 4px;
+}
+
+/* ---------- 6. Candidate Photo ---------- */
+
+.candidate-photo-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 112px;
+  height: 112px;
+  margin: 0 auto 18px;
+
+  flex-shrink: 0;
+}
+
+/* Decorative photo ring */
+
+.candidate-photo-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+
+  border: 2px solid #dce6ef;
+  border-radius: 50%;
+
+  transition: border-color var(--vote-transition);
+}
+
+.candidate-card:hover .candidate-photo-wrapper::before {
+  border-color: var(--vote-saffron);
+}
+
+.candidate-card.selected .candidate-photo-wrapper::before {
+  border-color: var(--vote-green);
+}
+
+.candidate-photo-img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+
+  border: 3px solid #ffffff;
+  background: #edf2f7;
+
+  box-shadow:
+    0 3px 12px rgba(16, 42, 67, 0.15);
+}
+
+.candidate-avatar-initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+
+  background: linear-gradient(
+    145deg,
+    var(--vote-blue),
+    var(--vote-navy)
+  );
+
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  box-shadow:
+    0 3px 12px rgba(16, 42, 67, 0.15);
+}
+
+/* ---------- 7. Candidate Name ---------- */
+
+.candidate-card h3,
+.candidate-name {
+  max-width: 100%;
+  margin: 4px 0 8px;
+
+  color: var(--vote-navy);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+/* ---------- 8. Party Name ---------- */
+
+.candidate-party-name {
+  margin: 0 0 14px;
+
+  color: var(--vote-muted);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+}
+
+/* ---------- 9. Party Symbol ---------- */
+
+.party-symbol-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 58px;
+  min-height: 58px;
+
+  margin: 0 auto 16px;
+  padding: 6px;
+
+  background: #f8fafc;
+  border: 1px solid var(--vote-border);
+  border-radius: 12px;
+
+  transition:
+    border-color var(--vote-transition),
+    background-color var(--vote-transition);
+}
+
+.candidate-card:hover .party-symbol-wrapper {
+  border-color: #b5c9dc;
+  background: #f1f6fb;
+}
+
+.party-symbol-img,
+.party-symbol-icon {
+  display: block;
+
+  width: 48px;
+  height: 48px;
+
+  object-fit: contain;
+  object-position: center;
+
+  border-radius: 7px;
+  background: #ffffff;
+}
+
+.party-symbol-wrapper.text-symbol {
+  min-width: 58px;
+  min-height: 42px;
+
+  padding: 7px 14px;
+
+  background: var(--vote-saffron-light);
+  border: 1px solid #f1d5ad;
+  border-radius: 9px;
+
+  color: var(--vote-navy);
+  font-size: 17px;
+  font-weight: 700;
+
+  overflow-wrap: anywhere;
+}
+
+/* ---------- 10. Party Badge ---------- */
+
+.candidate-party-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  max-width: 100%;
+  margin-bottom: 12px;
+  padding: 7px 14px;
+
+  background: var(--vote-blue-light);
+  border: 1px solid #ccdeef;
+  border-radius: 30px;
+
+  color: var(--vote-blue);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+/* ---------- 11. Candidate Description ---------- */
+
+.candidate-desc {
+  width: 100%;
+  margin: 0 0 22px;
+
+  color: var(--vote-muted);
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.75;
+
+  overflow-wrap: anywhere;
+  flex-grow: 1;
+}
+
+/* ---------- 12. Vote Button ---------- */
+
+.btn-card-vote {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 190px;
+  min-height: 44px;
+
+  margin-top: auto;
+  padding: 11px 18px;
+
+  background: #ffffff;
+  border: 1px solid var(--vote-blue);
+  border-radius: 8px;
+
+  color: var(--vote-blue);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--vote-transition),
+    color var(--vote-transition),
+    border-color var(--vote-transition),
+    box-shadow var(--vote-transition);
+}
+
+.candidate-card:hover .btn-card-vote {
+  background: var(--vote-navy);
+  border-color: var(--vote-navy);
+  color: #ffffff;
+}
+
+.candidate-card.selected .btn-card-vote {
+  background: var(--vote-green);
+  border-color: var(--vote-green);
+  color: #ffffff;
+}
+
+.btn-card-vote:hover {
+  box-shadow: 0 4px 12px rgba(16, 42, 67, 0.15);
+}
+
+.btn-card-vote:focus-visible {
+  outline: 3px solid rgba(23, 74, 126, 0.35);
+  outline-offset: 3px;
+}
+
+/* ---------- 13. Sticky Vote Submit Bar ---------- */
+
+.vote-submit-bar {
+  position: sticky;
+  bottom: 12px;
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  width: 100%;
+  margin-top: 30px;
+  padding: 18px 24px;
+
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid var(--vote-border);
+  border-top: 3px solid var(--vote-green);
+  border-radius: var(--vote-radius);
+
+  box-shadow:
+    0 8px 28px rgba(16, 42, 67, 0.13);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+#selectedLabel {
+  margin: 0;
+
+  color: var(--vote-navy);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.6;
+
+  overflow-wrap: anywhere;
+}
+
+/* ---------- 14. Government Seal / Success Icon ---------- */
+
+.seal-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+
+  margin-bottom: 18px;
+
+  background: var(--vote-green-light);
+  border: 2px solid var(--vote-green);
+  border-radius: 50%;
+
+  color: var(--vote-green);
+  font-size: 28px;
+
+  box-shadow:
+    0 4px 12px rgba(23, 107, 69, 0.1);
+}
+
+/* ---------- 15. Modal Backdrop ---------- */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(7, 22, 38, 0.72);
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* ---------- 16. Modal Card ---------- */
+
+.modal-card {
+  position: relative;
+
+  width: 100%;
+  max-width: 460px;
+  max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
+
+  padding: 30px;
+
+  background: #ffffff;
+  border: 1px solid var(--vote-border);
+  border-radius: 16px;
+
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.28);
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.modal-card h3 {
+  margin: 0 0 14px;
+
+  color: var(--vote-navy);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.modal-card p {
+  color: var(--vote-muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* ---------- 17. Modal Action Buttons ---------- */
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin-top: 26px;
+}
+
+.modal-actions button {
+  min-height: 42px;
+  max-width: 100%;
+  padding: 10px 18px;
+
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition:
+    background-color var(--vote-transition),
+    border-color var(--vote-transition),
+    box-shadow var(--vote-transition);
+}
+
+.modal-actions button:focus-visible {
+  outline: 3px solid rgba(23, 74, 126, 0.35);
+  outline-offset: 3px;
+}
+
+/* ---------- 18. Tablet Responsive ---------- */
+
+@media (max-width: 900px) {
+  .vote-container {
+    padding: 24px 18px 36px;
+  }
+
+  .candidate-grid {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(100%, 250px), 1fr)
+    );
+
+    gap: 20px;
+  }
+
+  .candidate-card {
+    padding: 26px 20px 22px;
+  }
+
+  .vote-head {
+    padding: 24px;
+  }
+}
+
+/* ---------- 19. Mobile Responsive ---------- */
+
+@media (max-width: 600px) {
+  .vote-container {
+    padding: 16px 12px 30px;
+  }
+
+  .vote-head {
+    padding: 22px 18px;
+    margin-bottom: 22px;
+    border-radius: 12px;
+  }
+
+  .vote-head h1 {
+    font-size: 25px;
+  }
+
+  .candidate-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .candidate-card {
+    padding: 26px 20px 22px;
+    border-radius: 12px;
+  }
+
+  .candidate-photo-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+
+  .candidate-avatar-initials {
+    font-size: 27px;
+  }
+
+  .candidate-card h3,
+  .candidate-name {
+    font-size: 19px;
+  }
+
+  .vote-submit-bar {
+    bottom: 8px;
+
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 12px;
+
+    margin-top: 24px;
+    padding: 16px;
+
+    text-align: center;
+    border-radius: 12px;
+  }
+
+  .modal-backdrop {
+    align-items: center;
+    padding: 12px;
+  }
+
+  .modal-card {
+    padding: 24px 20px;
+    border-radius: 14px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .modal-actions button {
+    width: 100%;
+  }
+}
+
+/* ---------- 20. Small Mobile ---------- */
+
+@media (max-width: 360px) {
+  .vote-container {
+    padding: 12px 8px 24px;
+  }
+
+  .vote-head {
+    padding: 20px 14px;
+  }
+
+  .vote-head h1 {
+    font-size: 22px;
+  }
+
+  .candidate-card {
+    padding: 24px 14px 20px;
+  }
+
+  .candidate-photo-wrapper {
+    width: 88px;
+    height: 88px;
+  }
+
+  .candidate-card h3,
+  .candidate-name {
+    font-size: 18px;
+  }
+
+  .vote-submit-bar {
+    padding: 14px 12px;
+  }
+
+  .modal-card {
+    padding: 20px 16px;
+  }
+}
+
+/* ---------- 21. Accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .candidate-card,
+  .candidate-card::before,
+  .candidate-photo-wrapper::before,
+  .party-symbol-wrapper,
+  .btn-card-vote,
+  .modal-actions button {
+    transition: none;
+  }
+
+  .candidate-card:hover {
+    transform: none;
+  }
+}

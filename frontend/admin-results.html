@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Admin Panel</title>
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+</head>
+<body>
+    <div class="admin-dashboard">
+        <nav class="admin-navbar">
+            <div class="navbar-brand">
+                <h2>Admin Panel</h2>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="admin-dashboard.html">Dashboard</a></li>
+                <li><a href="manage-users.html">Manage Users</a></li>
+                <li><a href="manage-candidates.html">Manage Candidates</a></li>
+                <li><a href="manage-elections.html">Manage Elections</a></li>
+                <li><a href="index.html" class="logout">Logout</a></li>
+            </ul>
+        </nav>
+
+        <div class="dashboard-content">
+            <h1>Election Results</h1>
+            
+            <div class="results-filter">
+                <select id="electionFilter" class="filter-select">
+                    <option value="">Select Election</option>
+                    <!-- Elections will be populated here -->
+                </select>
+                <button class="btn-export" id="exportResultsBtn">Export Results</button>
+            </div>
+
+            <div class="results-container">
+                <div id="resultsChart" class="chart-container"></div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Photo</th>
+                            <th>Candidate Name</th>
+                            <th>Party &amp; Symbol</th>
+                            <th>Votes Received</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsTableBody">
+                        <!-- Results will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="results-summary">
+                <h3>Summary</h3>
+                <p>Total Votes Cast: <strong id="totalVotesCast">0</strong></p>
+                <p>Valid Votes: <strong id="validVotes">0</strong></p>
+                <p>Invalid Votes: <strong id="invalidVotes">0</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/admin-results.js"></script>
+</body>
+</html>

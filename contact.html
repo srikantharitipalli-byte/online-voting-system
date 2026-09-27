@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — OVS</title>
+<link rel="stylesheet" href="frontend/css/style.css" />
+<link rel="stylesheet" href="frontend/css/contact.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="navbar">
+    <a href="frontend/index.html" class="brand"><span class="brand-mark">OV</span>OVS</a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="frontend/index.html">Home</a></li>
+      <li><a href="candidates.html">Candidates</a></li>
+      <li><a href="frontend/vote.html">Vote</a></li>
+      <li><a href="frontend/result.html">Results</a></li>
+      <li><a href="frontend/about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="nav-cta" id="nav-auth-area"></div>
+  </nav>
+</header>
+
+<main class="page-main">
+  <div class="container contact-grid">
+
+    <div>
+      <span class="eyebrow">Get in touch</span>
+      <h1 style="font-size:30px;margin:10px 0 12px;">Questions about the election?</h1>
+      <p>Reach the election desk for help with registration, technical issues, or general enquiries.</p>
+
+      <ul class="contact-info-list">
+        <li><span class="contact-icon">✉</span> support@ovs-election.example</li>
+        <li><span class="contact-icon">☎</span> +91 79 4000 1234</li>
+        <li><span class="contact-icon">📍</span> Election Commission Office, Ahmedabad, Gujarat</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div id="alertBox" class="alert"></div>
+      <form id="contactForm" novalidate>
+        <div class="form-group">
+          <label for="cname">Full Name <span style="color: #e53e3e;">*</span></label>
+          <input type="text" id="cname" name="name" required placeholder="Your full name" maxlength="100" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="cemail">Email Address <span style="color: #e53e3e;">*</span></label>
+          <input type="email" id="cemail" name="email" required placeholder="you@example.com" maxlength="150" autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="csubject">Subject</label>
+          <input type="text" id="csubject" name="subject" placeholder="What is this inquiry about?" maxlength="200" />
+        </div>
+        <div class="form-group">
+          <label for="cmessage">Message <span style="color: #e53e3e;">*</span></label>
+          <textarea id="cmessage" name="message" required placeholder="How can we help?" maxlength="5000"></textarea>
+        </div>
+        <button type="submit" id="submitContactBtn" class="btn btn-primary btn-block">Send Message</button>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>An automated Online Voting System built to make elections simple and secure.</span>
+      <span><span>Secure Digital Voting Experience</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="frontend/js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitContactBtn');
+
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideAlert('alertBox');
+
+      const nameInput = document.getElementById('cname');
+      const emailInput = document.getElementById('cemail');
+      const subjectInput = document.getElementById('csubject');
+      const messageInput = document.getElementById('cmessage');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const subject = subjectInput ? subjectInput.value.trim() : '';
+      const message = messageInput ? messageInput.value.trim() : '';
+
+      // Client-side validation
+      if (!name) {
+        showAlert('alertBox', 'Please enter your full name.');
+        if (nameInput) nameInput.focus();
+        return;
+      }
+
+      if (!email) {
+        showAlert('alertBox', 'Please enter your email address.');
+        if (emailInput) emailInput.focus();
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showAlert('alertBox', 'Please enter a valid email address (e.g. user@example.com).');
+        if (emailInput) emailInput.focus();
+        return;
+      }
+
+      if (!message) {
+        showAlert('alertBox', 'Please enter your message.');
+        if (messageInput) messageInput.focus();
+        return;
+      }
+
+      // Prevent multiple submissions
+      submitBtn.disabled = true;
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending Message...';
+
+      try {
+        const response = await fetch('http://localhost:5000/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            subject: subject || null,
+            message
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.status === 'success') {
+          showAlert('alertBox', data.message || 'Thank you! Your message has been sent successfully.', 'success');
+          contactForm.reset();
+        } else {
+          showAlert('alertBox', data.message || 'Failed to send your message. Please try again.');
+        }
+      } catch (error) {
+        console.error('Contact form submission error:', error);
+        showAlert('alertBox', 'Cannot connect to the backend server. Please make sure the backend is running at http://localhost:5000.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
+    });
+  });
+</script>
+</body>
+</html>

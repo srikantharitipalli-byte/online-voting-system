@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — OVS</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="navbar">
+    <a href="index.html" class="brand"><span class="brand-mark">OV</span>OVS</a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="manage-elections.html">Elections</a></li>
+      <li><a href="result.html">Results</a></li>
+      <li><a href="profile.html">Profile</a></li>
+    </ul>
+    <div class="nav-cta" id="nav-auth-area"></div>
+  </nav>
+</header>
+
+<main class="page-main">
+  <div class="container dashboard-grid">
+    <aside class="sidebar card" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-mark">OV</div>
+        <div class="brand-text">Online Voting</div>
+      </div>
+      <nav class="side-nav">
+        <button class="side-link active" data-section="home">🏠 Dashboard</button>
+        <button class="side-link" data-section="elections">📋 Available Elections</button>
+        <button class="side-link" data-section="myvotes">🗳️ My Votes</button>
+        <button class="side-link" data-section="results">📊 Election Results</button>
+        <button class="side-link" data-section="profile">👤 Profile</button>
+       
+        <button class="side-link" id="side-logout">⎋ Logout</button>
+      </nav>
+    </aside>
+
+    <section class="dash-main">
+      <div class="dash-header">
+        <h1 id="welcomeTitle">Welcome, User</h1>
+        <div class="dash-actions">
+          <button class="btn btn-primary" id="btn-refresh">Refresh</button>
+          <button class="btn btn-primary" id="btn-logout">Logout</button>
+        </div>
+      </div>
+
+      <div id="section-home" class="section">
+        <div class="cards-row">
+          <div class="stat-card card">
+            <div class="stat-title">Available Elections</div>
+            <div class="stat-value" id="stat-available">0</div>
+          </div>
+          <div class="stat-card card">
+            <div class="stat-title">Elections Voted</div>
+            <div class="stat-value" id="stat-voted">0</div>
+          </div>
+          <div class="stat-card card">
+            <div class="stat-title">Upcoming Elections</div>
+            <div class="stat-value" id="stat-upcoming">0</div>
+          </div>
+          <div class="stat-card card">
+            <div class="stat-title">Completed Elections</div>
+            <div class="stat-value" id="stat-completed">0</div>
+          </div>
+        </div>
+
+        <div class="panel card">
+          <h2>Recent Elections</h2>
+          <div id="electionsList" class="elections-list"></div>
+        </div>
+      </div>
+
+      <div id="section-elections" class="section hidden">
+        <div class="panel card">
+          <h2>Available Elections</h2>
+          <div id="electionsTable"></div>
+        </div>
+      </div>
+
+      <div id="section-myvotes" class="section hidden">
+        <div class="panel card">
+          <h2>My Votes</h2>
+          <div id="myVotesList"></div>
+        </div>
+      </div>
+
+      <div id="section-results" class="section hidden">
+        <div class="panel card">
+          <h2>Election Results</h2>
+          <div id="resultsList"></div>
+        </div>
+      </div>
+
+      <div id="section-profile" class="section hidden">
+        <div class="panel card">
+          <h2>Profile</h2>
+          <div id="profileCard" class="profile-card"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>The central hub for monitoring system activity, candidates, and voter data.</span>
+      <span><span>Secure • Transparent • Reliable</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

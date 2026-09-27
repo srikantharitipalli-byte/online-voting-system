@@ -1,0 +1,1269 @@
+/* =========================================================
+   DASHBOARD.CSS
+   Premium Government e-Governance Voting Dashboard
+   Theme: Navy Blue | Saffron | Ashoka Green | White
+   Existing HTML classes and JavaScript preserved
+   ========================================================= */
+
+
+/* =========================================================
+   1. DESIGN TOKENS
+   ========================================================= */
+
+:root {
+  --dash-navy: #102a43;
+  --dash-navy-dark: #0a1f33;
+  --dash-blue: #174a7e;
+  --dash-blue-light: #edf4fb;
+
+  --dash-green: #176b45;
+  --dash-green-dark: #115538;
+  --dash-green-light: #eaf5ee;
+
+  --dash-saffron: #e89b36;
+  --dash-saffron-light: #fff5e7;
+
+  --dash-white: #ffffff;
+  --dash-bg: #f3f6fa;
+  --dash-surface: #ffffff;
+
+  --dash-text: #172b3a;
+  --dash-muted: #637587;
+  --dash-line: #d9e2eb;
+
+  --dash-danger: #b53a35;
+  --dash-danger-light: #fff1f0;
+
+  --dash-radius: 14px;
+  --dash-radius-sm: 9px;
+
+  --dash-shadow:
+    0 4px 18px rgba(16, 42, 67, 0.07);
+
+  --dash-shadow-hover:
+    0 12px 30px rgba(16, 42, 67, 0.12);
+
+  --dash-transition: 0.2s ease;
+}
+
+
+/* =========================================================
+   2. MAIN DASHBOARD GRID
+   ========================================================= */
+
+.dashboard-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(210px, 260px)
+    minmax(0, 1fr);
+
+  gap: 24px;
+  align-items: start;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.dashboard-grid *,
+.dashboard-grid *::before,
+.dashboard-grid *::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   3. SIDEBAR
+   ========================================================= */
+
+.sidebar {
+  position: sticky;
+  top: 20px;
+  z-index: 20;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 520px;
+
+  padding: 20px 16px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f8fafc 100%
+    );
+
+  border: 1px solid var(--dash-line);
+  border-radius: var(--dash-radius);
+
+  box-shadow: var(--dash-shadow);
+
+  overflow: hidden;
+}
+
+
+/* Government accent */
+
+.sidebar::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background: linear-gradient(
+    to right,
+    #f59e0b 0%,
+    #f59e0b 33.33%,
+    #ffffff 33.33%,
+    #ffffff 66.66%,
+    #16834a 66.66%,
+    #16834a 100%
+  );
+}
+
+
+/* =========================================================
+   4. SIDEBAR BRAND
+   ========================================================= */
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 22px;
+  padding: 6px 4px 18px;
+
+  border-bottom: 1px solid var(--dash-line);
+}
+
+.sidebar .brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--dash-saffron),
+      #d47f17
+    );
+
+  color: var(--dash-navy-dark);
+
+  font-size: 18px;
+  font-weight: 900;
+
+  box-shadow:
+    0 5px 12px rgba(232, 155, 54, 0.2);
+}
+
+.sidebar .brand-text {
+  min-width: 0;
+
+  color: var(--dash-navy-dark);
+
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   5. SIDEBAR NAVIGATION
+   ========================================================= */
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+  margin-top: 12px;
+}
+
+.side-link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-height: 44px;
+
+  padding: 10px 13px;
+
+  background: transparent;
+
+  border: 1px solid transparent;
+  border-radius: 9px;
+
+  color: var(--dash-navy);
+
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 650;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--dash-transition),
+    color var(--dash-transition),
+    border-color var(--dash-transition),
+    transform var(--dash-transition);
+}
+
+.side-link:hover {
+  background: var(--dash-blue-light);
+  border-color: #d5e3f0;
+  color: var(--dash-blue);
+
+  transform: translateX(2px);
+}
+
+.side-link.active {
+  background:
+    linear-gradient(
+      90deg,
+      #edf5fb,
+      #ffffff
+    );
+
+  border-color: #cddfeb;
+
+  color: var(--dash-blue);
+
+  box-shadow:
+    0 4px 12px rgba(16, 42, 67, 0.06);
+}
+
+
+/* Active indicator */
+
+.side-link.active::before {
+  content: "";
+
+  position: absolute;
+  left: -1px;
+  top: 7px;
+  bottom: 7px;
+
+  width: 3px;
+
+  background: var(--dash-green);
+
+  border-radius: 0 4px 4px 0;
+}
+
+
+/* Keyboard focus */
+
+.side-link:focus-visible {
+  outline: 3px solid rgba(23, 74, 126, 0.25);
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   6. MAIN DASHBOARD AREA
+   ========================================================= */
+
+.dash-main {
+  min-width: 0;
+  min-height: 520px;
+}
+
+
+/* =========================================================
+   7. DASHBOARD HEADERS
+   ========================================================= */
+
+.dash-header,
+.dash-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin-bottom: 24px;
+
+  flex-wrap: wrap;
+}
+
+.dash-head {
+  align-items: flex-end;
+  margin-bottom: 28px;
+}
+
+.dash-head h1,
+.dash-header h1 {
+  margin: 5px 0 0;
+
+  color: var(--dash-navy-dark);
+
+  font-size: clamp(25px, 3vw, 32px);
+  font-weight: 850;
+
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+}
+
+.dash-head p,
+.dash-header p {
+  margin-top: 7px;
+
+  color: var(--dash-muted);
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   8. STAT CARDS
+   ========================================================= */
+
+.cards-row {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+
+  margin-bottom: 24px;
+
+  min-width: 0;
+}
+
+.stat-card {
+  position: relative;
+
+  min-width: 0;
+
+  padding: 20px 18px;
+
+  background: var(--dash-white);
+
+  border: 1px solid var(--dash-line);
+  border-radius: 13px;
+
+  text-align: center;
+
+  box-shadow: var(--dash-shadow);
+
+  overflow: hidden;
+
+  transition:
+    transform var(--dash-transition),
+    box-shadow var(--dash-transition),
+    border-color var(--dash-transition);
+}
+
+.stat-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background: var(--dash-blue);
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #b8cddd;
+
+  box-shadow: var(--dash-shadow-hover);
+}
+
+.stat-title {
+  margin-bottom: 8px;
+
+  color: var(--dash-muted);
+
+  font-size: 12.5px;
+  font-weight: 750;
+
+  line-height: 1.5;
+}
+
+.stat-value {
+  color: var(--dash-navy-dark);
+
+  font-size: 29px;
+  font-weight: 850;
+
+  line-height: 1.2;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   9. DASHBOARD CONTENT GRID
+   ========================================================= */
+
+.dash-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.6fr)
+    minmax(260px, 1fr);
+
+  gap: 20px;
+
+  margin-bottom: 20px;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   10. PRIMARY DASHBOARD PANEL
+   ========================================================= */
+
+.dash-primary {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  min-width: 0;
+  min-height: 180px;
+
+  padding: 28px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--dash-navy-dark),
+      var(--dash-navy),
+      var(--dash-blue)
+    );
+
+  border: 1px solid #163d61;
+  border-radius: var(--dash-radius);
+
+  color: #ffffff;
+
+  box-shadow:
+    0 10px 28px rgba(16, 42, 67, 0.16);
+
+  overflow: hidden;
+}
+
+
+/* Decorative accent */
+
+.dash-primary::after {
+  content: "";
+
+  position: absolute;
+
+  width: 160px;
+  height: 160px;
+
+  right: -70px;
+  top: -70px;
+
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+}
+
+.dash-primary h2 {
+  position: relative;
+  z-index: 1;
+
+  margin: 0 0 7px;
+
+  color: #ffffff;
+
+  font-size: 22px;
+  font-weight: 800;
+
+  line-height: 1.35;
+}
+
+.dash-primary p {
+  position: relative;
+  z-index: 1;
+
+  margin: 0 0 18px;
+
+  color: #dce8f3;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   11. VOTE CAST CONFIRMATION
+   ========================================================= */
+
+.vote-cast-confirmation {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  min-width: 0;
+}
+
+.seal-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 58px;
+  height: 58px;
+  min-width: 58px;
+
+  border-radius: 50%;
+
+  background: var(--dash-green-light);
+
+  color: var(--dash-green);
+
+  border: 2px solid var(--dash-green);
+
+  font-size: 25px;
+
+  flex-shrink: 0;
+
+  box-shadow:
+    0 5px 15px rgba(23, 107, 69, 0.15);
+}
+
+
+/* =========================================================
+   12. SIDE SUMMARY PANEL
+   ========================================================= */
+
+.dash-side {
+  min-width: 0;
+
+  padding: 22px;
+
+  background: var(--dash-white);
+
+  border: 1px solid var(--dash-line);
+  border-radius: var(--dash-radius);
+
+  box-shadow: var(--dash-shadow);
+}
+
+.dash-side h3 {
+  margin: 0 0 14px;
+
+  color: var(--dash-navy);
+
+  font-size: 16px;
+  font-weight: 800;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   13. SUMMARY LIST
+   ========================================================= */
+
+.summary-list {
+  list-style: none;
+
+  margin: 0 0 18px;
+  padding: 0;
+}
+
+.summary-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  padding: 11px 0;
+
+  border-bottom: 1px solid var(--dash-line);
+
+  color: var(--dash-muted);
+
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.summary-list li:last-child {
+  border-bottom: none;
+}
+
+.summary-list strong {
+  color: var(--dash-navy-dark);
+
+  font-family: var(--font-mono, monospace);
+
+  font-size: 14px;
+  font-weight: 800;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   14. PANELS
+   ========================================================= */
+
+.panel {
+  min-width: 0;
+
+  padding: 22px;
+
+  background: var(--dash-white);
+
+  border: 1px solid var(--dash-line);
+  border-radius: var(--dash-radius);
+
+  box-shadow: var(--dash-shadow);
+}
+
+.panel h2 {
+  margin: 0 0 16px;
+
+  color: var(--dash-navy-dark);
+
+  font-size: 19px;
+  font-weight: 800;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   15. ELECTIONS LIST
+   ========================================================= */
+
+.elections-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   16. ELECTION CARD
+   ========================================================= */
+
+.election-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  min-width: 0;
+
+  padding: 16px;
+
+  background: #ffffff;
+
+  border: 1px solid var(--dash-line);
+  border-radius: 11px;
+
+  transition:
+    border-color var(--dash-transition),
+    box-shadow var(--dash-transition),
+    transform var(--dash-transition);
+}
+
+.election-card:hover {
+  border-color: #aec3d6;
+
+  box-shadow:
+    0 6px 18px rgba(16, 42, 67, 0.07);
+
+  transform: translateY(-1px);
+}
+
+.election-meta {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.election-meta h3,
+.election-meta h4 {
+  margin: 0 0 5px;
+
+  color: var(--dash-navy);
+
+  font-size: 15px;
+  font-weight: 800;
+
+  line-height: 1.45;
+
+  overflow-wrap: anywhere;
+}
+
+.election-meta p {
+  margin: 0;
+
+  color: var(--dash-muted);
+
+  font-size: 13px;
+  line-height: 1.6;
+
+  overflow-wrap: anywhere;
+}
+
+.election-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   17. STATUS BADGES
+   ========================================================= */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 28px;
+
+  padding: 5px 11px;
+
+  border-radius: 999px;
+
+  font-size: 11.5px;
+  font-weight: 800;
+
+  line-height: 1.3;
+
+  white-space: nowrap;
+}
+
+
+/* Upcoming */
+
+.status-upcoming {
+  background: var(--dash-saffron-light);
+
+  color: #9a5b08;
+
+  border: 1px solid #efd4aa;
+}
+
+
+/* Active */
+
+.status-active {
+  background: var(--dash-green-light);
+
+  color: var(--dash-green-dark);
+
+  border: 1px solid #b9ddc8;
+}
+
+
+/* Completed */
+
+.status-completed {
+  background: #edf2f7;
+
+  color: var(--dash-navy);
+
+  border: 1px solid #d6e0ea;
+}
+
+
+/* =========================================================
+   18. PROFILE PREVIEW
+   ========================================================= */
+
+.dash-profile-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 18px;
+
+  min-width: 0;
+
+  padding: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid var(--dash-line);
+  border-radius: 12px;
+
+  box-shadow: var(--dash-shadow);
+
+  flex-wrap: wrap;
+}
+
+.dash-profile-preview > div {
+  min-width: 0;
+}
+
+.dash-profile-preview h3 {
+  margin: 0 0 5px;
+
+  color: var(--dash-navy);
+
+  font-size: 18px;
+  font-weight: 800;
+
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+.dash-profile-preview p {
+  margin: 0;
+
+  color: var(--dash-muted);
+
+  font-size: 13px;
+  line-height: 1.6;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   19. PROFILE CARD
+   ========================================================= */
+
+.profile-card {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+
+  min-width: 0;
+}
+
+.profile-row {
+  min-width: 0;
+
+  padding: 14px 16px;
+
+  background: #f8fafc;
+
+  border: 1px solid var(--dash-line);
+  border-radius: 9px;
+
+  color: var(--dash-text);
+
+  line-height: 1.6;
+
+  overflow-wrap: anywhere;
+}
+
+.profile-row strong {
+  color: var(--dash-navy);
+}
+
+
+/* =========================================================
+   20. OUTLINE BUTTON
+   ========================================================= */
+
+.btn-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40px;
+
+  padding: 9px 16px;
+
+  background: transparent;
+
+  border: 1px solid var(--dash-navy);
+
+  border-radius: 8px;
+
+  color: var(--dash-navy);
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 750;
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--dash-transition),
+    color var(--dash-transition),
+    border-color var(--dash-transition),
+    box-shadow var(--dash-transition);
+}
+
+.btn-outline-dark:hover {
+  background: var(--dash-navy);
+  border-color: var(--dash-navy);
+  color: #ffffff;
+
+  box-shadow:
+    0 4px 12px rgba(16, 42, 67, 0.15);
+}
+
+.btn-outline-dark:focus-visible {
+  outline: 3px solid rgba(23, 74, 126, 0.25);
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   21. ELECTIONS TABLE
+   ========================================================= */
+
+.elections-table {
+  width: 100%;
+  min-width: 620px;
+
+  border-collapse: separate;
+  border-spacing: 0;
+
+  color: var(--dash-text);
+
+  font-size: 13.5px;
+}
+
+.elections-table th,
+.elections-table td {
+  padding: 13px 14px;
+
+  border-bottom: 1px solid var(--dash-line);
+
+  text-align: left;
+
+  vertical-align: middle;
+
+  line-height: 1.5;
+}
+
+.elections-table th {
+  background: #f4f7fa;
+
+  color: var(--dash-navy);
+
+  font-size: 12px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.elections-table tr:last-child td {
+  border-bottom: none;
+}
+
+.elections-table tbody tr {
+  transition:
+    background-color var(--dash-transition);
+}
+
+.elections-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+
+/* =========================================================
+   22. TABLE SAFETY WRAPPER
+   ========================================================= */
+
+/*
+   If your HTML has a wrapper around the table,
+   this prevents horizontal overflow from breaking
+   the complete dashboard layout.
+*/
+
+.table-responsive {
+  width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  -webkit-overflow-scrolling: touch;
+
+  border: 1px solid var(--dash-line);
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   23. HIDDEN UTILITY
+   ========================================================= */
+
+.hidden {
+  display: none !important;
+}
+
+
+/* =========================================================
+   24. TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .dashboard-grid {
+    grid-template-columns:
+      minmax(200px, 230px)
+      minmax(0, 1fr);
+
+    gap: 18px;
+  }
+
+  .cards-row {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+  }
+
+  .dash-grid {
+    grid-template-columns:
+      minmax(0, 1.4fr)
+      minmax(240px, 1fr);
+
+    gap: 16px;
+  }
+}
+
+
+/* =========================================================
+   25. MOBILE / TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  .dashboard-grid {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 18px;
+  }
+
+  /*
+     Sidebar becomes normal content block on mobile.
+     This prevents sticky/overflow problems.
+  */
+
+  .sidebar {
+    position: relative;
+    top: auto;
+
+    min-height: auto;
+
+    order: 2;
+  }
+
+  .dash-main {
+    order: 1;
+    min-height: auto;
+  }
+
+  .dash-header,
+  .dash-head {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+  }
+
+  .dash-grid {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 16px;
+  }
+
+  .cards-row {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+  .election-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .election-actions {
+    width: 100%;
+
+    justify-content: flex-start;
+  }
+}
+
+
+/* =========================================================
+   26. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+
+  .cards-row {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .dash-primary {
+    padding: 22px 18px;
+  }
+
+  .dash-side,
+  .panel {
+    padding: 18px;
+  }
+
+  .profile-card {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .dash-profile-preview {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dash-profile-preview .btn-outline-dark {
+    width: 100%;
+  }
+
+  .election-card {
+    padding: 14px;
+  }
+
+  .election-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .election-actions .btn,
+  .election-actions button {
+    width: 100%;
+  }
+
+  .summary-list li {
+    font-size: 13px;
+  }
+
+  .vote-cast-confirmation {
+    align-items: flex-start;
+  }
+}
+
+
+/* =========================================================
+   27. VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .sidebar {
+    padding: 18px 12px;
+  }
+
+  .sidebar-brand {
+    gap: 9px;
+  }
+
+  .sidebar .brand-mark {
+    width: 42px;
+    height: 42px;
+  }
+
+  .side-link {
+    padding: 9px 10px;
+
+    font-size: 13px;
+  }
+
+  .dash-head h1,
+  .dash-header h1 {
+    font-size: 23px;
+  }
+
+  .stat-card {
+    padding: 17px 14px;
+  }
+
+  .stat-value {
+    font-size: 26px;
+  }
+
+  .dash-primary {
+    padding: 20px 15px;
+  }
+
+  .seal-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+  }
+}
+
+
+/* =========================================================
+   28. ACCESSIBILITY / REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .stat-card,
+  .side-link,
+  .election-card,
+  .btn-outline-dark {
+    transition: none;
+  }
+
+  .stat-card:hover,
+  .election-card:hover,
+  .side-link:hover {
+    transform: none;
+  }
+}
